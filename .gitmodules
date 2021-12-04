@@ -1,0 +1,3 @@
+[submodule "nuscr"]
+	path = nuscr
+	url = https://github.com/Tooni/nuscr
