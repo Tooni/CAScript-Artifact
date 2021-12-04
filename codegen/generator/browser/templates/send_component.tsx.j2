@@ -1,0 +1,71 @@
+import React from 'react';
+
+import * as Roles from './Roles';
+
+import {
+  ReceiveState,
+  SendState,
+  TerminalState
+} from './EFSM'; 
+
+import {
+  SendComponentFactory,
+  SendComponentFactoryFactory
+} from './Session';
+
+{% for type in endpoint.types -%}
+import { {{ type.external ~ ((' as ' ~ type.alias) if type.external != type.alias else '') }} } from "{{ type.path }}";
+{% endfor %}
+
+// ==================
+// Message structures
+// ==================
+
+namespace Payloads {
+{%- for action in state.actions -%}
+{%- if action.payloads|length > 0 %}
+  export interface {{ action.label }} {
+    {%- for payload in action.payloads %}
+    {{ payload.name }}: {{ payload.sort }};
+    {%- endfor %}
+  };
+{%- endif %}
+{%- endfor %}
+}
+
+// ===============
+// Component types
+// ===============
+
+type Props = {
+  factory: SendComponentFactoryFactory
+}
+
+/**
+ * __Send state: Possible messages:
+ *
+ {% for action in state.actions -%}
+ * * __Sends to {{ action.role }}, {{ action.label }}__({% if action.payloads|length > 0 %}Payloads.{{ action.label }}{% else %}{}{% endif %})
+ {% endfor -%}
+ */
+export default abstract class S{{ state }}<ComponentState = {}> extends React.Component<Props, ComponentState> {
+  {% for action in state.actions -%}
+  protected {{ action.label }}: SendComponentFactory<{% if action.payloads|length > 0 %}Payloads.{{ action.label }}{% else %}{}{% endif %}>;
+  {% endfor %}
+  constructor(props: Props) {
+    super(props);
+    {% for action in state.actions -%}
+    this.{{ action.label }} = props.factory<{% if action.payloads|length > 0 %}Payloads.{{ action.label }}{% else %}{}{% endif %}>(
+      Roles.Peers.{{ action.role }},
+      '{{ action.label }}',
+      {%- if endpoint.efsm.is_send_state(action.succ) %}
+      SendState
+      {%- elif endpoint.efsm.is_receive_state(action.succ) %}
+      ReceiveState
+      {%- else %}
+      TerminalState{%- endif -%}
+      .S{{ action.succ }}
+    );
+    {% endfor %}
+  }
+}

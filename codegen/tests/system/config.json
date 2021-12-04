@@ -1,0 +1,59 @@
+{
+    "tests": [
+        {
+            "filename": "BinarySimple.scr",
+            "protocols": [
+                {
+                    "identifier": "Greeting",
+                    "server": "Bob",
+                    "clients": ["Alice"]
+                },
+                {
+                    "identifier": "PingPong",
+                    "server": "Svr",
+                    "clients": ["Client"]
+                }
+            ]
+        },
+        {
+            "filename": "MultipartyCanonical.scr",
+            "protocols": [
+                {
+                    "identifier": "Ring",
+                    "server": "Carol",
+                    "clients": ["Alice", "Bob"]
+                }
+            ]
+        },
+        {
+            "filename": "MultipartyWithRouting.scr",
+            "protocols": [
+                {
+                    "identifier": "TwoBuyer",
+                    "server": "Seller",
+                    "clients": ["BuyerA", "BuyerB"]
+                }
+            ]
+        },
+        {
+            "filename": "OnlineWallet.scr",
+            "protocols": [
+                {
+                    "identifier": "OnlineWallet",
+                    "server": "Wallet",
+                    "clients": ["Customer", "Vendor"]
+                }
+            ]
+        },
+        {
+            "filename": "Contract.scr",
+            "protocols": [
+                {
+                    "identifier": "Contract",
+                    "server": "P",
+                    "clients": ["C"]
+                }
+            ]
+        }
+    ]
+}

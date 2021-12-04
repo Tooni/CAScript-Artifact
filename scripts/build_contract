@@ -1,0 +1,21 @@
+#!/usr/bin/bash
+echo "Installing node modules for Contract"
+cd /home/dev/case-studies/Contract
+npm i
+cd client
+npm i
+cd ~
+echo "Generating APIs for Contract"
+python3.8 -m codegen protocols/Contract.scr Contract P node -o case-studies/Contract/src
+python3.8 -m codegen protocols/Contract.scr Contract C browser -s P -o case-studies/Contract/client/src
+echo "SUCCESS: generated APIs for Contract"
+echo "Building Contract application"
+cd case-studies/Contract
+npm run build
+echo "SUCCESS: built Contract"
+echo "To run the case study, you can do"
+echo "  $ cd ~/case-studies/Contract"
+echo "  $ npm start"
+echo ""
+echo "and visit http://localhost:8080"
+echo "" 

@@ -1,0 +1,22 @@
+#!/usr/bin/bash
+echo "Installing node modules for OnlineWallet"
+cd /home/dev/case-studies/OnlineWallet
+npm i
+cd client
+npm i
+cd ~
+echo "Generating APIs for OnlineWallet"
+python3.8 -m codegen protocols/OnlineWallet.scr OnlineWallet Wallet node -o case-studies/OnlineWallet/src
+python3.8 -m codegen protocols/OnlineWallet.scr OnlineWallet Customer browser -s Wallet -o case-studies/OnlineWallet/client/src
+python3.8 -m codegen protocols/OnlineWallet.scr OnlineWallet Vendor browser -s Wallet -o case-studies/OnlineWallet/client/src
+echo "SUCCESS: generated APIs for NoughtsAndCrosses"
+echo "Building OnlineWallet application"
+cd case-studies/OnlineWallet
+npm run build
+echo "SUCCESS: built OnlineWallet"
+echo "To run the case study, you can do"
+echo "  $ cd ~/case-studies/OnlineWallet"
+echo "  $ npm start"
+echo ""
+echo "and visit http://localhost:8080"
+echo "" 

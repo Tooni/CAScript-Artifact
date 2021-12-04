@@ -1,0 +1,13 @@
+(*# CheckDirectedChoiceDisabled #*)
+
+global protocol Adder(role Client, role Svr) {
+    rec Loop {
+        choice at Client {
+            ADD(x: number, y: number) from Client to Svr;
+            RES(res: number) from Svr to Client;
+            continue Loop;
+        } or {
+            QUIT() from Client to Svr;
+        }
+    }
+}

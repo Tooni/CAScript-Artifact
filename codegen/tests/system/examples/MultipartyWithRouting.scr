@@ -1,0 +1,17 @@
+(*# CheckDirectedChoiceDisabled #*)
+
+global protocol TwoBuyer(role BuyerA, role BuyerB, role Seller) {
+
+	title(string)   from BuyerB to Seller;
+	quote(number)   from Seller to BuyerA;
+	quote(number)   from Seller to BuyerB;
+	split(number)   from BuyerB to BuyerA;
+	choice at BuyerA {
+		accept()    from BuyerA to BuyerB;
+		buy()       from BuyerA to Seller;
+	} or {
+		reject()    from BuyerA to BuyerB;
+		cancel()    from BuyerA to Seller;
+	}
+
+}

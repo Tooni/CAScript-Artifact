@@ -1,0 +1,24 @@
+(*# CheckDirectedChoiceDisabled #*)
+
+global protocol Contract(role C, role P) {
+  propose(initialPrice: int) from C to P;
+  rec Loop {
+    choice at P {
+      accept(confirmedPrice: int) from P to C;
+      confirm() from C to P;
+    } or {
+      counter(counterPrice: int) from P to C;
+      choice at C {
+        accept(confirmedPrice: int) from C to P;
+        confirm() from P to C;
+      } or {
+        counter(newCounterPrice: int) from C to P;
+        continue Loop;
+      } or {
+        reject() from C to P;
+      }
+    } or {
+      reject() from P to C;
+    }
+  }
+}

@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+cd ~/web-sandbox/node
+npm i
+cd ../browser
+npm i
+cd ../..
+python3.8 -m codegen.tests.system

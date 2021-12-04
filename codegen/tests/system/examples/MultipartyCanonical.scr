@@ -1,0 +1,9 @@
+(*# CheckDirectedChoiceDisabled #*)
+
+global protocol Ring(role Alice, role Bob, role Carol) {
+
+    HELLO() from Alice to Bob;
+    HELLO() from Bob to Carol;
+    HELLO() from Carol to Bob;
+    
+}
