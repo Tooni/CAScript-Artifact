@@ -1,5 +1,7 @@
 Artifact for the paper _Design-by-Contract for Flexible Multiparty Session Protocols_ by Lorenzo Gheri, Ivan Lanese, Neil Sayers, Emilio Tuosto, and Nobuko Yoshida.
 
+See `HowToGenerate.md` for how to generate a Docker image from this repository.
+
 This Readme is based heavily on [this wiki page](https://github.com/ansonmiu0214/TypeScript-Multiparty-Sessions/wiki/Guide-to-Implementing-Your-Own-Protocols) 
 from Anson Miu's project STScript.
 
