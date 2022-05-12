@@ -4,4 +4,6 @@ To generate the artifact just run
 
 `cd CAScript-Artifact`
 
+`git submodule update --init --recursive`
+
 `docker-compose run --service-ports dev`
