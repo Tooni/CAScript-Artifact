@@ -1,9 +1,7 @@
 To generate the artifact just run 
 
-`git clone https://github.com/Tooni/CAScript-Artifact.git`
+`git clone --recurse-submodules https://github.com/Tooni/CAScript-Artifact`
 
 `cd CAScript-Artifact`
-
-`git submodule update --init --recursive`
 
 `docker-compose run --service-ports dev`
