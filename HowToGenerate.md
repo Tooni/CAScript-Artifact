@@ -1,4 +1,4 @@
-To generate the artifact just run 
+To generate the Docker image just run 
 
 `git clone --recurse-submodules https://github.com/Tooni/CAScript-Artifact`
 
