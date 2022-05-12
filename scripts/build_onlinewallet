@@ -9,7 +9,7 @@ echo "Generating APIs for OnlineWallet"
 python3.8 -m codegen protocols/OnlineWallet.scr OnlineWallet Wallet node -o case-studies/OnlineWallet/src
 python3.8 -m codegen protocols/OnlineWallet.scr OnlineWallet Customer browser -s Wallet -o case-studies/OnlineWallet/client/src
 python3.8 -m codegen protocols/OnlineWallet.scr OnlineWallet Vendor browser -s Wallet -o case-studies/OnlineWallet/client/src
-echo "SUCCESS: generated APIs for NoughtsAndCrosses"
+echo "SUCCESS: generated APIs for OnlineWallet"
 echo "Building OnlineWallet application"
 cd case-studies/OnlineWallet
 npm run build
