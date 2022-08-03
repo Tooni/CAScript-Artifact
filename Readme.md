@@ -1,4 +1,4 @@
-The repo that was used the generate the artifact for the paper _Design-by-Contract for Flexible Multiparty Session Protocols_ by Lorenzo Gheri, Ivan Lanese, Neil Sayers, Emilio Tuosto, and Nobuko Yoshida.
+The repo that was used the generate the artifact for the paper [_Design-by-Contract for Flexible Multiparty Session Protocols_](https://drops.dagstuhl.de/opus/volltexte/2022/16236/) by Lorenzo Gheri, Ivan Lanese, Neil Sayers, Emilio Tuosto, and Nobuko Yoshida.
 
 This Readme is based heavily on [this wiki page](https://github.com/ansonmiu0214/TypeScript-Multiparty-Sessions/wiki/Guide-to-Implementing-Your-Own-Protocols) 
 from Anson Miu's project STScript.
